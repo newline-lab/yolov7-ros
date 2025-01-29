@@ -24,11 +24,11 @@ def create_detection_msg(img_msg: Image, detections: torch.Tensor) -> Detection2
 
     # header
     header = create_header()
-    detection_array_msg.header = header
+    detection_array_msg.header = img_msg.header
     for detection in detections:
         x1, y1, x2, y2, conf, cls = detection.tolist()
         single_detection_msg = Detection2D()
-        single_detection_msg.header = header
+        single_detection_msg.header = img_msg.header
 
         # src img
         single_detection_msg.source_img = img_msg

@@ -11,8 +11,8 @@ def get_random_color(seed):
 
 
 def draw_detections(img: np.array, bboxes: List[List[int]], classes: List[int],
-                    class_labels: Union[List[str], None]):
-    for bbox, cls in zip(bboxes, classes):
+                    class_labels: Union[List[str], None], confs: List[int]):
+    for bbox, cls, conf in zip(bboxes, classes, confs):
         x1, y1, x2, y2 = bbox
 
         color = get_random_color(int(cls))
@@ -21,8 +21,7 @@ def draw_detections(img: np.array, bboxes: List[List[int]], classes: List[int],
         )
         
         if class_labels:
-            label = class_labels[int(cls)]
-
+            label = (f'{class_labels[int(cls)]} {conf:.2f}')
             x_text = int(x1)
             y_text = max(15, int(y1 - 10))
             img = cv2.putText(
