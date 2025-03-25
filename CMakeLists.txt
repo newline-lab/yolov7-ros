@@ -15,6 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   vision_msgs
   message_generation
+  cv_bridge
 )
 
 ## System dependencies are found with CMake's conventions

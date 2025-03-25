@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python
 
 from models.experimental import attempt_load
 from utils.general import non_max_suppression
@@ -13,6 +13,8 @@ import cv2
 from torchvision.transforms import ToTensor
 import numpy as np
 import rospy
+import sys
+import cv2
 
 from vision_msgs.msg import Detection2DArray, Detection2D, BoundingBox2D
 from sensor_msgs.msg import Image
@@ -126,7 +128,7 @@ class Yolov7Publisher:
         """ callback function for publisher """
         np_img_orig = self.bridge.imgmsg_to_cv2(
             img_msg, desired_encoding='bgr8'
-        )
+        ).copy() 
 
         # handle possible different img formats
         if len(np_img_orig.shape) == 2:

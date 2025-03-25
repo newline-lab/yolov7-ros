@@ -15,7 +15,7 @@
         <!-- confidence threshold -->
         <param name="conf_thresh" type="double" value="0.5" />
         <!-- intersection over union threshold -->
-        <param name="iou_thresh" type="double" value="0.45" />
+        <param name="iou_thresh" type="double" value="0.40" />
         <!-- queue size for publishing -->
         <param name="queue_size" type="int" value="1" />
         <!-- image size to which to resize each input image before feeding into the
